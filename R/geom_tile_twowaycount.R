@@ -30,7 +30,7 @@ compute_group_twowaycountfill <- function(data, scales){
 
 StatTwowaycountfill <- ggplot2::ggproto(`_class` = "Twowaycount",
                                   `_inherit` = ggplot2::Stat,
-                                  required_aes = c("x", "y"),
+                                  required_aes = c("x", "y", "fill"),
                                   compute_group = compute_group_twowaycountfill)
 
 #' Title
