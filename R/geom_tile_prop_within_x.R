@@ -8,7 +8,7 @@ compute_panel_prop_within_x <- function(data, scales) {
 
 }
 
-StatPropovertime <- ggplot2::ggproto("StatPropovertime",
+StatPropwithinx <- ggplot2::ggproto("StatPropovertime",
                                      Stat,
                                      compute_panel = compute_panel_prop_within_x,
                                      required_aes = c("x", "y", "fill")
@@ -31,13 +31,17 @@ StatPropovertime <- ggplot2::ggproto("StatPropovertime",
 #' library(ggplot2)
 #' ggplot(data = mtcars) +
 #' aes(x = cyl, y = gear) +
-#' geom_tile_prop_over_time() +
-#' aes(fill = 1)
-geom_tile_prop_over_time <- function(mapping = NULL, data = NULL,
-                                     position = "identity", na.rm = FALSE, show.legend = NA,
+#' geom_tile_prop_within_x() +
+#' aes(fill = 1) +
+#' geom_text_twowaycount(color = "oldlace")
+geom_tile_prop_within_x <- function(mapping = NULL,
+                                     data = NULL,
+                                     position = "identity",
+                                     na.rm = FALSE,
+                                     show.legend = NA,
                                      inherit.aes = TRUE, ...) {
   layer(
-    stat = StatPropovertime, geom = ggplot2::GeomTile, data = data, mapping = mapping,
+    stat = StatPropwithinx, geom = ggplot2::GeomTile, data = data, mapping = mapping,
     position = position, show.legend = show.legend, inherit.aes = inherit.aes,
     params = list(na.rm = na.rm, ...)
   )

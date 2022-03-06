@@ -1,0 +1,106 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ggpivot
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of ggpivot is to make tables w ggplot2.
+
+Specify x and y categorical variables; let ggplot2 count number of observations or calculate proportions.
+
+## Installation
+
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("EvaMaeRey/ggpivot")
+```
+
+```{r}
+library(tidyverse)
+library(magrittr)
+```
+
+# a geom that counts categories and prints the count
+
+```{r}
+geom_text_twowaycount_script <- readLines("./R/geom_text_twowaycount.R")
+```
+
+```{r count, code = geom_text_twowaycount_script}
+
+```
+
+```{r}
+library(ggplot2)
+ggplot(data = mtcars) +
+aes(x = cyl, y = gear) +
+geom_text_twowaycount()
+```
+
+# a geom that is a tile and fills (color) according to count
+
+```{r}
+geom_tile_twowaycount_script <- readLines("./R/geom_tile_twowaycount.R")
+```
+
+```{r counttile, code = geom_tile_twowaycount_script}
+
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(data = mtcars) +
+aes(x = cyl, y = gear) +
+geom_tile_twowaycount() +
+  aes(fill = 1) + 
+geom_text_twowaycount(color = "oldlace")
+```
+
+
+# a geom that is a tile and fills (color) according to proportion within column (x)
+
+```{r}
+geom_tile_prop_within_x_script <- readLines("./R/geom_tile_prop_within_x.R")
+```
+
+```{r proptile, code = geom_tile_prop_within_x_script}
+
+```
+
+
+
+```{r}
+geom_text_prop_within_x_script <- readLines("./R/geom_text_prop_within_x.R")
+```
+
+```{r proptext, code = geom_text_prop_within_x_script}
+
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(data = mtcars) +
+aes(x = cyl, y = gear) +
+geom_tile_prop_within_x(width = .8) +
+geom_text_prop_within_x(color = "oldlace") +
+  aes(fill = 1)
+```
