@@ -2,7 +2,7 @@ compute_panel_prop_within_x <- function(data, scales) {
 
   data %>%
     group_by(x, y) %>%
-    summarise(fill = sum(fill)) %>%
+    summarise(value = sum(value)) %>%
     mutate(fill = fill/sum(fill)) %>%
     ungroup()
 

@@ -22,16 +22,16 @@ compute_group_twowaycountfill <- function(data, scales){
   data %>%
     # add an additional column called label
     # the geom we inherit from requires the label aesthetic
-    dplyr::count(x, y) %>%
-    dplyr::rename(fill = n)
+    dplyr::count(x, y)
 
 }
 
 
 StatTwowaycountfill <- ggplot2::ggproto(`_class` = "Twowaycount",
                                   `_inherit` = ggplot2::Stat,
-                                  required_aes = c("x", "y", "fill"),
-                                  compute_group = compute_group_twowaycountfill)
+                                  required_aes = c("x", "y"),
+                                  compute_group = compute_group_twowaycountfill,
+                                  default_aes = aes(fill = after_stat(n)))
 
 #' Title
 #'

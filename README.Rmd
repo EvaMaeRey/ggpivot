@@ -70,7 +70,6 @@ library(ggplot2)
 ggplot(data = mtcars) +
 aes(x = cyl, y = gear) +
 geom_tile_twowaycount() +
-  aes(fill = 1) + 
 geom_text_twowaycount(color = "oldlace")
 ```
 
