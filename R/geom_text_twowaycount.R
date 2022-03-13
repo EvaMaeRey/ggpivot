@@ -21,8 +21,7 @@ compute_group_twowaycount <- function(data, scales){
   data %>%
     # add an additional column called label
     # the geom we inherit from requires the label aesthetic
-    dplyr::count(x, y) %>%
-    dplyr::rename(label = n)
+    dplyr::count(x, y)
 
 }
 
@@ -30,7 +29,8 @@ compute_group_twowaycount <- function(data, scales){
 StatTwowaycount <- ggplot2::ggproto(`_class` = "Twowaycount",
                                   `_inherit` = ggplot2::Stat,
                                   required_aes = c("x", "y"),
-                                  compute_group = compute_group_twowaycount)
+                                  compute_group = compute_group_twowaycount,
+                                  default_aes = aes(label = after_stat(n)))
 
 #' Title
 #'

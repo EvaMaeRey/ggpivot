@@ -51,8 +51,7 @@ StatTwowaycountfill <- ggplot2::ggproto(`_class` = "Twowaycount",
 #' ggplot(data = mtcars) +
 #' aes(x = cyl, y = gear) +
 #' geom_tile_twowaycount() +
-#' aes(fill = 1) +
-#' geom_text_twowaycount()
+#' geom_text_twowaycount(color = "white")
 geom_tile_twowaycount <- function(mapping = NULL, data = NULL,
                                   position = "identity", na.rm = FALSE,
                                   show.legend = NA,
