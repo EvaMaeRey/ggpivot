@@ -9,9 +9,9 @@ compute_panel_prop_within_x_text <- function(data, scales) {
 
 }
 
-StatPropwithinxtext <- ggplot2::ggproto("StatPropwithinxtext",
-                                     Stat,
-                                     compute_panel = compute_panel_prop_within_x_text,
+StatPropwithinxtext <- ggplot2::ggproto(`_class` = "StatPropwithinxtext",
+                                        `_inherit` = ggplot2::Stat,
+                                        compute_panel = compute_panel_prop_within_x_text,
                                      required_aes = c("x", "y", "fill")
 )
 

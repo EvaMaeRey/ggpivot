@@ -31,7 +31,7 @@ StatTwowaycountfill <- ggplot2::ggproto(`_class` = "Twowaycount",
                                   `_inherit` = ggplot2::Stat,
                                   required_aes = c("x", "y"),
                                   compute_group = compute_group_twowaycountfill,
-                                  default_aes = aes(fill = after_stat(n)))
+                                  default_aes = ggplot2::aes(fill = ggplot2::after_stat(n)))
 
 #' Title
 #'

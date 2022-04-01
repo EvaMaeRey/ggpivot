@@ -9,7 +9,7 @@
 #' @examples
 #' mtcars %>%
 #' rename(x = cyl, y = gear, value = 1) %>%
-#' compute_panel_prop_within
+#' compute_panel_prop_withinx
 compute_panel_prop_withinx <- function(data, scales, drop = F) {
 
   data %>%
@@ -23,11 +23,11 @@ compute_panel_prop_withinx <- function(data, scales, drop = F) {
 }
 
 
-StatPropwithinx <- ggplot2::ggproto("StatPropwithinx",
-                                     Stat,
+StatPropwithinx <- ggplot2::ggproto(`_class` = "StatPropwithinx",
+                                    `_inherit` = ggplot2::Stat,
                                      compute_panel = compute_panel_prop_withinx,
                                      required_aes = c("x", "y", "value"),
-                                     default_aes = aes(fill = after_stat(prop))
+                                     default_aes = ggplot2::aes(fill = ggplot2::after_stat(prop))
 )
 
 #' Title

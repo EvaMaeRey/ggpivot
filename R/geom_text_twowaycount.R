@@ -30,7 +30,7 @@ StatTwowaycount <- ggplot2::ggproto(`_class` = "Twowaycount",
                                   `_inherit` = ggplot2::Stat,
                                   required_aes = c("x", "y"),
                                   compute_group = compute_group_twowaycount,
-                                  default_aes = aes(label = after_stat(n)))
+                                  default_aes = ggplot2::aes(label = ggplot2::after_stat(n)))
 
 #' Title
 #'
